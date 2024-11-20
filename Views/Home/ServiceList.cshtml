@@ -1,0 +1,52 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<Services>
+
+@{
+    ViewData["Title"] = "ServiceList";
+}
+
+<h2>Service List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Organization</th>
+            <th>ColorCode</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var service in Model)
+        {
+            <tr>
+                <td>@service.Id</td>
+                <td>@service.Code</td>
+                <td>@service.Name</td>
+                <td>@service.Organization</td>
+                <td>@service.ColorCode</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    body {
+        background-color: #05668D;
+        color: aliceblue;
+    }
+
+    thead {
+        background-color: #A5BE00;
+        color: aliceblue;
+    }
+
+    table {
+        background-color: #EBF2FA;
+    }
+</style>

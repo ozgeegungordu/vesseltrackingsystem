@@ -1,0 +1,64 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@*@model VesselTrackingSystem.Models.Services
+
+@using (Html.BeginForm("Map", "Home", FormMethod.Post))
+{
+    @Html.DropDownListFor(m => m.SelectedServiceId, Model.ServiceList, "Select service", new { @class = "form-control" })
+    <button type="submit" class="btn btn-primary">Submit</button>
+}*@
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+<div id="map" style="width: 100%; height: 750px; margin-top:100px; margin-bottom:100px"></div>
+
+<script>
+    function initMap() {
+        new google.maps.Map(document.getElementById('map'), {
+            center: { lat: 36.5999, lng: 36.1927 },
+            zoom: 4,
+        });
+    }
+</script>
+<script>
+    function initMap() {
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 3,
+            center: { lat: 0, lng: -180 },
+            mapTypeId: "terrain",
+        });
+        const vesselPlanCoordinates = [
+            { lat: 37.772, lng: -122.214 },
+            { lat: 21.291, lng: -157.821 },
+            { lat: -18.142, lng: 178.431 },
+            { lat: -27.467, lng: 153.027 },
+        ];
+        const vesselPath = new google.maps.Polyline({
+            path: vesselPlanCoordinates,
+            geodesic: true,
+            strokeColor: "#E36397",
+            strokeOpacity: 1.0,
+            strokeWeight: 2.5,
+        });
+
+        vesselPath.setMap(map);
+    }
+
+    window.initMap = initMap;
+    </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUDXQF51zz-2BJao30AALJjCVyK3dPzUg&callback=initMap"></script>
+
+<style>
+    body {
+        background-color: #05668D;
+    }
+    label {
+        color: #EBF2FA; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+    }
+</style>

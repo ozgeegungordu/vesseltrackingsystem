@@ -1,0 +1,51 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<Vessels>
+
+@{
+    ViewData["Title"] = "VesselList";
+}
+
+<h2>Vessel List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>IMO</th>
+            <th>MMSI</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var vessel in Model)
+        {
+            <tr>
+                <td>@vessel.Id</td>
+                <td>@vessel.Name</td>
+                <td>@vessel.Imo</td>
+                <td>@vessel.Mmsi</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    body {
+        background-color: #05668D;
+        color:aliceblue;
+    }
+    
+    thead {
+        background-color: #A5BE00;
+        color: aliceblue;
+    }
+
+    table {
+        background-color: #EBF2FA;
+        ;
+    }
+</style>
